@@ -1,17 +1,23 @@
 % http://stackoverflow.com/a/3285603
+% this answer uses experimentel LaTeX 3 functions
 \documentclass{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
 
 \usepackage{expl3}
 \ExplSyntaxOn
 \newcommand\latinabbrev[1]{
-  \peek_meaning:NTF . {% Same as \@ifnextchar
-    #1\@}%
-  { \peek_catcode:NTF a {% Check whether next char has same catcode as \'a, i.e., is a letter
-      #1.\@ }%
-    {#1.\@}}}
+  % check if next char is a dot
+  \peek_meaning:NTF . {%
+    #1\@}{%
+  % check if else next char is a letter, i.e., has the same catcode as \'a
+  \peek_catcode:NTF a {%
+    #1.\@}{%
+  #1.\@}}}
 \ExplSyntaxOff
 
-% the / after abbrev is part of the command and ensures correct spacing after the abbreviation
+% the / after abbrev is part of the command,
+% it ensures correct spacing after the abbreviation
 \def\abbrev/{\latinabbrev{abbrev}}
 
 % Common abbreviations:
