@@ -1,0 +1,23 @@
+\documentclass{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+
+\usepackage[%
+	% backend=biber should be prefered, but bibtex is still more common
+	backend=bibtex,
+	% needed for bibtex, biber can handle utf8 by default
+	bibencoding=ascii,
+	% set the style according to your needs
+	style=numeric,
+	% when citing multiple sources, sort these
+	sortcites,
+	firstinits=true,
+	maxnames=10,
+]{biblatex}
+
+\addbibresource{howto_cite.bib}
+
+\begin{document}
+Use biblatex~\cite{stackexchange}.
+\printbibliography{}
+\end{document}
