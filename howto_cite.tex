@@ -4,7 +4,7 @@
 
 \usepackage[%
 	% backend=biber should be prefered, but bibtex is still more common
-	backend=bibtex,
+	backend=bibtex8,
 	% needed for bibtex, biber can handle utf8 by default
 	bibencoding=ascii,
 	% set the style according to your needs
@@ -12,12 +12,44 @@
 	% when citing multiple sources, sort these
 	sortcites,
 	firstinits=true,
-	maxnames=10,
+	% use et al. only for 11 and more authors in bibliography
+	maxbibnames=10,
+	% but use et al. for 3 and more authors in text cites
+	maxcitenames=2,
 ]{biblatex}
+% https://tex.stackexchange.com/questions/40798/how-do-i-get-et-al-to-appear-in-italics-when-using-textcite-or-citeauthor-w
+\DefineBibliographyStrings{english}{%
+	andothers = {\em et\addabbrvspace{}al\adddot}
+}
+
+% hyperref makes references clickable
+\usepackage[%
+	% bookmarks for side panel in pdf viewers
+	bookmarks,
+	% better handling of urls
+	breaklinks=true,
+	% disable color boxes around clickable links
+	colorlinks=true,
+	% set clickable links color to something
+	linkcolor=black,
+	citecolor=black,
+	urlcolor=black,
+	pdfpagelayout=TwoPageLeft,
+]{hyperref}
+% nameref is able to cite theorems and stuff by name
+\usepackage{nameref}
+%load cleveref after hyperref, see sect 12.1 of manual
+\usepackage[capitalise]{cleveref}
 
 \addbibresource{howto_cite.bib}
 
 \begin{document}
+\section{HowTo Cite}
+\label{begin}
 Use biblatex~\cite{stackexchange}.
+Be aware, that there are more cite commands than only \texttt{\textbackslash{}cite\{\}}.
+\textcite{stackexchange}, \texttt{\textbackslash{}textcite\{\}} automatically includes the author of the cited work.
+\section{HowTo Reference}
+See \cref{begin} for how to cite.
 \printbibliography{}
 \end{document}
