@@ -2,6 +2,8 @@
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
 
+\usepackage{abbrv}
+
 \usepackage[%
 	% backend=biber should be prefered, but bibtex is still more common
 	backend=bibtex8,
@@ -19,7 +21,7 @@
 ]{biblatex}
 % https://tex.stackexchange.com/questions/40798/how-do-i-get-et-al-to-appear-in-italics-when-using-textcite-or-citeauthor-w
 \DefineBibliographyStrings{english}{%
-	andothers = {\em et\addabbrvspace{}al\adddot}
+	andothers = {\etal/}
 }
 
 % hyperref makes references clickable
