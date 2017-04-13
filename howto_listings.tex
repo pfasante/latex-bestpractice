@@ -1,0 +1,70 @@
+\documentclass{scrartcl}
+\usepackage[english]{babel}
+\usepackage{fontspec}
+\setmainfont[%
+       BoldFont       = texgyrepagella-bold.otf,
+       ItalicFont     = texgyrepagella-italic.otf,
+       BoldItalicFont = texgyrepagella-bolditalic.otf,
+]{texgyrepagella-regular.otf}
+\setmonofont[Scale=MatchLowercase]{DejaVu Sans Mono}
+
+% https://tex.stackexchange.com/questions/122256/only-select-code-without-line-numbers
+\usepackage{accsupp}
+\usepackage{listings}
+
+\newcommand{\noncopynumber}[1]{
+    \BeginAccSupp{method=escape,ActualText={}}
+    #1
+    \EndAccSupp{}
+}
+
+\begin{document}
+\title{HowTo Listings}
+\author{}
+\date{}
+\maketitle
+\vspace{-2em}
+
+\begin{lstlisting}[%
+    language=TeX,
+    basicstyle=\ttfamily,
+    %float,
+    numbers=left, numberstyle=\tiny\noncopynumber,
+    caption={Example Listing.
+             Note that the correct listings enviroment is \emph{lstlisting}.},
+    label={lst:example}
+]
+\documentclass{scrartcl}
+\usepackage{fontspec}
+\setmainfont[%
+       BoldFont       = texgyrepagella-bold.otf,
+       ItalicFont     = texgyrepagella-italic.otf,
+       BoldItalicFont = texgyrepagella-bolditalic.otf,
+]{texgyrepagella-regular.otf}
+\setmonofont[Scale=MatchLowercase]{DejaVu Sans Mono}
+
+% https://tex.stackexchange.com/questions/122256/only-select-code-without-line-numbers
+\usepackage{accsupp}
+\usepackage{listings}
+
+\newcommand{\noncopynumber}[1]{
+    \BeginAccSupp{method=escape,ActualText={}}
+    #1
+    \EndAccSupp{}
+}
+
+\begin{document}
+\begin{lstlisting}[%
+    language=TeX,
+    basicstyle=\ttfamily,
+    %float,
+    numbers=left, numberstyle=\tiny\noncopynumber,
+    caption={Example Listing.
+             Note that the correct listings enviroment is \emph{lstlisting}.},
+    label={lst:example}
+]
+\end{l_stlisting}
+\end{document}
+\end{lstlisting}
+
+\end{document}
