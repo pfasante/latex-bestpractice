@@ -24,6 +24,10 @@
 	andothers = {\etal/}
 }
 
+%http://tex.stackexchange.com/questions/74931/biblatexs-textcite-inserts-a-breaking-space-between-author-names-and-citation-n
+% use non breaking space for textcite source~[LABEL]
+\renewcommand\namelabeldelim{\addnbspace}
+
 % hyperref makes references clickable
 \usepackage[%
 	% bookmarks for side panel in pdf viewers
